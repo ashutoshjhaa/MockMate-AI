@@ -1,11 +1,11 @@
-
 const TOKEN_KEY = 'mockmate_token'
+const API = (import.meta.env.VITE_API_URL || '') + '/api'
 
 export const getToken = () => localStorage.getItem(TOKEN_KEY)
 export const setToken = (t) => (t ? localStorage.setItem(TOKEN_KEY, t) : localStorage.removeItem(TOKEN_KEY))
 
 async function request(method, path, body) {
-  const res = await fetch('/api' + path, {
+  const res = await fetch(API + path, {
     method,
     headers: {
       'Content-Type': 'application/json',
